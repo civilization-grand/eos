@@ -1,0 +1,33 @@
+int strlen(char *str)
+{
+    int size = 0;
+    while (str[size] != '\0')
+    {
+        size++;
+    }
+    return size;
+}
+
+void strcpy(char *dest, char *src)
+{
+    for (int i = 0; i <= strlen(src); i++)
+    {
+        dest[i] = src[i];
+    }
+}
+
+int strcmp(char *str1, char *str2)
+{
+    if (strlen(str1) == strlen(str2))
+    {
+        for (int i = 0; i < strlen(str2); i++)
+        {
+            if (str1[i] != str2[i])
+            {
+                return 0;
+            }
+        }
+        return 1;
+    }
+    return 0;
+}

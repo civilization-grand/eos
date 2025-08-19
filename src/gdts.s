@@ -4,7 +4,7 @@ global gdt_flush
 
 gdt_flush:
     mov eax, [esp + 4]
-    lgdt[eax]
+    lgdt [eax]
 
     mov eax, 0x10
     mov ds, ax

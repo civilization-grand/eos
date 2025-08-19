@@ -20,5 +20,6 @@
 #define SERIAL_LINE_ENABLE_DLAB 0x80
 
 void outb(unsigned short port, unsigned char data);
+unsigned char inb(unsigned short port);
 
 #endif

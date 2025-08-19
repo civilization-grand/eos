@@ -1,7 +1,7 @@
 
 #include "gdt.h"
 
-extern void gdt_flush();
+extern void gdt_flush(struct gdt *address);
 
 struct gdt_entry gdt_entries[5];
 struct gdt gdt_ptr;
