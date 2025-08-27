@@ -82,7 +82,7 @@ void no_int_handler()
 
 void init_idt()
 {
-    // memset(entries, 0, sizeof(entries));
+    memset(entries, 0, sizeof(entries));
 
     idt_ptr.size = sizeof(entries) - 1;
     idt_ptr.address = entries;

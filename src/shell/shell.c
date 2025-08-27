@@ -7,7 +7,10 @@ extern int cp;
 int shell_cursor = 0;
 
 char *message1 = "He chose the rejoice of being imbued, it is the will to calamity,\noblivion is his auguries. His fetid realm is misanthropy.\nPay heed, don't relinquish cosmos...\n";
+char *message2 = "A lot, if not all, want to boost your fears.\nHowever, it is up to you to make them success.";
+
 char *story1 = "Someone was blessed with a new baby, and he asked the obstetrician: Does it have a brain?\nThe doctor replied, surprised: What makes you wonder about that?\nThe man: No! I want it without a brain!\nThe doctor: Why?\nThe man: That's our custom... We remove our brains, so we obey our parents, and they,\nwho lack brains, in turn obey their parents, and so on until obedience finally\nleads to something no one knows about.\n";
+
 char *poem1_1 = "    I met a traveller from an antique land\n";
 char *poem1_2 = "    Who said: Two vast and trunkless legs of stone\n";
 char *poem1_3 = "    Stand in the desart. Near them, on the sand,\n";
@@ -50,6 +53,11 @@ int shell_main()
             print(message1);
         }
 
+        if (strcmp("m2\n", prompt_string))
+        {
+            print(message2);
+        }
+
         if (strcmp("s1\n", prompt_string))
         {
             print(story1);
@@ -67,6 +75,7 @@ int shell_main()
             print(poem1_8);
             print(poem1_9);
             print(poem1_10);
+            print(poem1_11);
             print(poem1_12);
             print(poem1_13);
             print(poem1_14);
@@ -87,6 +96,7 @@ int shell_main()
             print("Command -arg-| Describtion\n");
             print("-----------------------------------------------------\n");
             print("m1           : A message that the OS wants to provide.\n");
+            print("m2           : A message that the OS wants to provide.\n");
             print("s1           : Strange situation.\n");
             print("p1           : Ozymandias poem by Percy Shelley.\n");
             print("print -txt-  : To print a string.\n");
