@@ -3,6 +3,7 @@
 #include "io/io.h"
 #include "stdio/stdio.h"
 #include "memory/memory.h"
+#include "vga/vga.h"
 
 unsigned char key;
 unsigned char key_ready;
@@ -51,10 +52,24 @@ unsigned char keyboard_int()
 
     if (sc < 0x80)
     {
-        key = sc;
-        key_ready = 1;
-    }
+        /*
+        if (scancode_to_ascii[sc] == '\b')
+        {
+            write_char(scancode_to_ascii[sc], 0, DARK_GRAY);
+        }
+        */
 
+        if (scancode_to_ascii[sc] == -56)
+        {
+            caps_lock = !caps_lock;
+            key_ready = 0;
+        }
+        else
+        {
+            key = sc;
+            key_ready = 1;
+        }
+    }
     outb(0x20, 0x20); // Master PIC."acknowledgment" that the hardware interrupt must send. (interrupt handling complete).
 }
 //-------IRQs----------------

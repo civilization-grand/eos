@@ -22,7 +22,7 @@ char *poem1_11 = "    Look on my works, ye Mighty, and despair!'\n";
 char *poem1_12 = "    No thing beside remains. Round the decay\n";
 char *poem1_13 = "    Of that colossal wreck, boundless and bare\n";
 char *poem1_14 = "    The lone and level sands stretch far away.\n";
-char *poem1_15 = "—Percy Shelley, Ozymandias, 1819 edition\n";
+char *poem1_15 = "-Percy Shelley, Ozymandias, 1819 edition\n";
 
 void display_prompt()
 {
@@ -95,6 +95,19 @@ int shell_main()
         //------------------------------------------------------------------------------------
         else
         {
+            /*
+            for (int i = 0; i < strlen(prompt_string); i++)
+            {
+                write_char(prompt_string[i], 0, BROWN);
+                if (prompt_string[i] == '\n')
+                {
+                    print("new line\n");
+                }
+
+                print("\n");
+            }
+            */
+
             /*Do nothin*/
         }
     }

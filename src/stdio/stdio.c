@@ -1,13 +1,24 @@
 #include "stdio.h"
+#include "keyboard/keyboard.h"
 #include "vga/vga.h"
 
 char read_char()
 {
+
+    char c;
     while (!key_ready)
         ;
 
     key_ready = 0;
-    char c = scancode_to_ascii[key];
+    if (caps_lock == 1)
+    {
+        c = scancode_to_ascii[key];
+        c -= 32;
+        write_char(c, 0, DARK_GRAY);
+        return c;
+    }
+
+    c = scancode_to_ascii[key];
     write_char(c, 0, DARK_GRAY);
 
     return c;
