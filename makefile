@@ -50,13 +50,13 @@ objects/shell.o: src/shell/shell.c
 	gcc $(INCLUDES) $(GCC_FLAGS) src/shell/shell.c -o objects/shell.o
 
 iso: iso/boot/grub/stage2_eltorito
-	genisoimage -R -b boot/grub/stage2_eltorito -no-emul-boot -boot-load-size 4 -A os -input-charset utf8 -quiet -boot-info-table -o oslvl1.iso iso
+	genisoimage -R -b boot/grub/stage2_eltorito -no-emul-boot -boot-load-size 4 -A os -input-charset utf8 -quiet -boot-info-table -o eos.iso iso
 
 emu_elf:
 	qemu-system-i386 -kernel iso/boot/kernel.elf -s -S
 
-emu: oslvl1.iso
-	qemu-system-x86_64 -cdrom oslvl1.iso
+emu: eos.iso
+	qemu-system-x86_64 -cdrom eos.iso
 
 clean:
-	rm -rf objects/*.o iso/boot/kernel.elf oslvl1.iso
+	rm -rf objects/*.o iso/boot/kernel.elf eos.iso
