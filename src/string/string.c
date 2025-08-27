@@ -31,3 +31,29 @@ int strcmp(char *str1, char *str2)
     }
     return 0;
 }
+
+char *first_token(char *str)
+{
+    char *ret_str;
+    int i = 0;
+    while (1)
+    {
+        ret_str[i] = str[i];
+        if (str[i] == ' ')
+        {
+            break;
+        }
+        i++;
+    }
+
+    ret_str[i] = '\0';
+    return ret_str;
+}
+
+void clear_string(char *str)
+{
+    for (int i = 0; i < strlen(str); i++)
+    {
+        str[i] = '\0';
+    }
+}

@@ -1,43 +1,47 @@
-#include "io.h"
-#include "gdt.h"
-#include "idt.h"
-#include "vga.h"
-#include "string.h"
+#include "io/io.h"
+#include "gdt/gdt.h"
+#include "idt/idt.h"
+#include "vga/vga.h"
+#include "string/string.h"
+#include "memory/heap/kheap.h"
+#include "stdio/stdio.h"
 
-extern int cp;
-extern int string_buffer;
-int shell_index;
+#include "shell/shell.h"
 
 void kmain()
 {
-    console_init();
-
-    char *os_name = "                         <<-An operating system is running->>\n\n";
-    fb_write(os_name, strlen(os_name));
-
+    init_console();
     init_gdt();
-
-    char *gdt_msg = "GDT: Everything is fine.\n";
-    fb_write(gdt_msg, strlen(gdt_msg));
-
     init_idt();
+    init_pool();
 
-    char *idt_msg = "IDT: Everything is fine.\n";
-    fb_write(idt_msg, strlen(idt_msg));
+    char *had_msg1 = "              @@@@@  @@@@@  @@@@@\n";
+    char *had_msg2 = "              @      @   @  @    \n";
+    char *had_msg3 = "              @@@@   @   @  @@@@@\n";
+    char *had_msg4 = "              @      @   @      @\n";
+    char *had_msg5 = "              @@@@@  @@@@@  @@@@@\n\n";
+    char *had_msg6 = "       Type 'help' to see what you can do.\n\n";
 
-    char *copy = "IDT: Everything is fine-------------------.\n";
-    strcpy(copy, idt_msg);
-    fb_write(copy, strlen(copy));
+    fb_write(had_msg1, strlen(had_msg1), 0, GREEN);
+    fb_write(had_msg2, strlen(had_msg2), 0, GREEN);
 
-    if (strcmp(idt_msg, copy))
-    {
-        char *is_equ = "They are same\n";
-        fb_write(is_equ, strlen(is_equ));
-    }
+    fb_write(had_msg3, strlen(had_msg3), 0, GREEN);
+    fb_write(had_msg4, strlen(had_msg4), 0, GREEN);
+    fb_write(had_msg5, strlen(had_msg5), 0, GREEN);
+    fb_write(had_msg6, strlen(had_msg6), 0, GREEN);
 
-    // int x = 1 / 0;
+    /*
+    char *had_msg1_2 = "      eos\n";
+    char *had_msg2_2 = "     e   e \n";
+    char *had_msg3_2 = "    o <0> o \n";
+    char *had_msg4_2 = "   s       s \n";
+    char *had_msg5_2 = "  eos_eos_eos \n";
+    */
 
-    char *shell_msg = ">>";
-    fb_write(shell_msg, strlen(shell_msg));
-    shell_index = cp;
+    /*
+    char *msg = "---Read it, feel it, then criticize it--\nThese might be the words that can ruin my life,\nand yours too if you wasn't wise enough,\nsince a few words was enough to crush somone,\nor make him bleed forever.\n";
+    fb_write(msg, strlen(msg));
+    */
+
+    shell_main();
 }
