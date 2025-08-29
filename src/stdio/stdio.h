@@ -13,6 +13,6 @@ extern char caps_lock;
 char read_char();
 void read_string(char string[INPUT_BUFFER_MAX_SIZE]);
 
-void print(char string[INPUT_BUFFER_MAX_SIZE]);
+void print(char *string);
 
 #endif

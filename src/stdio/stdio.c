@@ -1,6 +1,7 @@
 #include "stdio.h"
 #include "keyboard/keyboard.h"
 #include "vga/vga.h"
+#include "string/string.h"
 
 char read_char()
 {
@@ -59,7 +60,7 @@ void read_string(char string[INPUT_BUFFER_MAX_SIZE])
     return string;
 }
 
-void print(char string[INPUT_BUFFER_MAX_SIZE])
+void print(char *string)
 {
     fb_write(string, strlen(string), 0, LIGHT_GRAY);
 }

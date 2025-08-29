@@ -53,10 +53,13 @@ char *first_token(char *str)
     return ret_str;
 }
 
-void clear_string(char *str)
+void clear_string(char *string)
 {
-    for (int i = 0; i < strlen(str); i++)
+    if (strlen(string) > 0)
     {
-        str[i] = '\0';
+        for (int i = 0; i < strlen(string); i++)
+        {
+            string[i] = '\0';
+        }
     }
 }

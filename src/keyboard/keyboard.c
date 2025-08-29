@@ -11,7 +11,7 @@ char scancode_to_ascii[128] = {
     'a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l', ';', '\'', '`', 0, '\\',      // 30-43
     'z', 'x', 'c', 'v', 'b', 'n', 'm', ',', '.', '/', 0, '*', 0, ' ',          // 44-57
 
-    200 // Caps Lock (58)
+    200 // Caps Lock (58) /*I wrote 200 here before, and this was one of the dumbest thing that I have ever done.*/
     /*
     129, 130, 131, 132,                                                        // F1-F4 (59-62)
     133, 134, 135, 136,                                                        // F5-F8 (63-66)

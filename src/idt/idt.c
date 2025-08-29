@@ -3,7 +3,7 @@
 #include "io/io.h"
 #include "stdio/stdio.h"
 #include "memory/memory.h"
-#include "vga/vga.h"
+#include "vga/vga.h" // For debugging
 
 unsigned char key;
 unsigned char key_ready;
