@@ -107,7 +107,7 @@ void init_idt()
     outb(0xA1, 0x00);
 
     outb(0x21, inb(0x21) | 0x01); // Mask timer interrupt.
-    // outb(0x21, inb(0x21) | 0x02); // Mask keyboard int
+    //  outb(0x21, inb(0x21) | 0x02); // Mask keyboard int
 
     for (int i = 0; i < 256; i++)
     {

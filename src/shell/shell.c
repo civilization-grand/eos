@@ -8,6 +8,7 @@ int shell_cursor = 0;
 
 char message1[INPUT_BUFFER_MAX_SIZE] = "He chose the rejoice of being imbued, it is the will to calamity,\noblivion is his auguries. His fetid realm is misanthropy.\nPay heed, don't relinquish cosmos...\n"; // It's too long string, so I shouldn't uss the char * declaration.3
 char message2[INPUT_BUFFER_MAX_SIZE] = "A lot, if not all, want to boost your fears.\nHowever, it is up to you to make them success or not.\n";
+char message3[INPUT_BUFFER_MAX_SIZE] = "Even if a human being had the tremendous knowledge to be on the surface of the\n most distant planet, he would still not understand himself.\n";
 char story1[INPUT_BUFFER_MAX_SIZE] = "Someone was blessed with a new baby, and he asked the obstetrician: Does it have a brain?\nThe doctor replied, surprised: What makes you wonder about that?\nThe man: No! I want it without a brain!\nThe doctor: Why?\nThe man: That's our custom... We remove our brains, so we obey our parents, and they,\nwho lack brains, in turn obey their parents, and so on until obedience finally\nleads to something no one knows about.\n"; // It's too long string, so I shouldn't uss the char * declaration.
 
 void display_prompt()
@@ -42,6 +43,11 @@ int shell_main()
             print(message2);
         }
 
+        else if (strcmp("m3\n", command))
+        {
+            print(message3);
+        }
+
         else if (strcmp("s1\n", command))
         {
             print(story1);
@@ -62,6 +68,7 @@ int shell_main()
             print("-----------------------------------------------------\n");
             print("m1           : A message that the OS wants to provide.\n");
             print("m2           : A message that the OS wants to provide.\n");
+            print("m3           : A message that the OS wants to provide.\n");
             print("s1           : Strange situation.\n");
             print("print -txt-  : To print a string.\n");
             print("-----------------------------------------------------\n");
