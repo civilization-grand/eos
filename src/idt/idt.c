@@ -1,10 +1,8 @@
-
 #include "idt.h"
 
 #include "io/io.h"
 #include "memory/memory.h"
 #include "stdio/stdio.h"
-#include "vga/vga.h"  // For debugging
 
 unsigned char key;
 unsigned char key_ready;

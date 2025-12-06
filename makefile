@@ -1,5 +1,3 @@
-
-
 OBJECT_FILES = objects/loader.o objects/kmain.o objects/vga.o objects/io.o objects/gdt.o objects/gdts.o objects/idt.o objects/idts.o objects/keyboard.o objects/string.o objects/memory.o objects/kheap.o objects/stdio.o objects/shell.o
 GCC_FLAGS = -m32 -nostdlib -fno-builtin  -fno-stack-protector -nostartfiles -nodefaultlibs -Wall -Wextra -g -c 
 INCLUDES = -I./src

@@ -3,3 +3,11 @@
 
 # ignore iso file
 *.iso
+
+# ignore caches
+.cache
+
+# ignore kernel.elf
+iso/boot/kernel.elf
+
+compile_commands.json
