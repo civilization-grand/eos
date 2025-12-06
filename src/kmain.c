@@ -20,7 +20,11 @@ void kmain()
     char *had_msg3 = "              @@@@   @   @  @@@@@\n";
     char *had_msg4 = "              @      @   @      @\n";
     char *had_msg5 = "              @@@@@  @@@@@  @@@@@\n\n";
+
     char *had_msg6 = "       Type 'help' to see what you can do.\n\n";
+
+    char *had_msg7 = "Be a friend to good people, people that you will be proud of, so when your tears fall, you'll not be shamed and cover your eyes.\n";
+    char *had_msg8 = "Be a friend to good people, people that you will be proud of, so when your tears fall, you'll not be shamed and cover your eyes.\n";
 
     fb_write(had_msg1, strlen(had_msg1), 0, GREEN);
     fb_write(had_msg2, strlen(had_msg2), 0, GREEN);
@@ -29,6 +33,10 @@ void kmain()
     fb_write(had_msg4, strlen(had_msg4), 0, GREEN);
     fb_write(had_msg5, strlen(had_msg5), 0, GREEN);
     fb_write(had_msg6, strlen(had_msg6), 0, GREEN);
+    fb_write(had_msg7, strlen(had_msg7), 0, RED);
+
+    char *msg = "---Read it, feel it, then criticize it--\nThese might be the words that can ruin my life,\nand yours too if you wasn't wise enough,\nsince a few words was enough to crush somone,\nor make him bleed forever.\n";
+    fb_write(msg, strlen(msg), 0, BROWN);
 
     /*
     char *had_msg1_2 = "      eos\n";

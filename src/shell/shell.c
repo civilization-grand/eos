@@ -36,6 +36,7 @@ int shell_main()
         if (strcmp("m1\n", command))
         {
             print(message1);
+            int x = 3 / 0; // This will cause the "division by zero" interrupt to be invoked.
         }
 
         else if (strcmp("m2\n", command))

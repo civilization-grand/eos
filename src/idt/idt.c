@@ -25,7 +25,7 @@ void set_idt_entry(unsigned int num, unsigned int handler, unsigned short segmen
 //----------ISRs-------------
 void zero_divide_int()
 {
-    print("Divide by zero\n");
+    print("Error: divide by zero\n");
     for (;;)
         ;
 }
@@ -70,6 +70,8 @@ unsigned char keyboard_int()
             key_ready = 1;
         }
     }
+
+    // print(" A key is pressed ");
     outb(0x20, 0x20); // Master PIC."acknowledgment" that the hardware interrupt must send. (interrupt handling complete).
 }
 //-------IRQs----------------

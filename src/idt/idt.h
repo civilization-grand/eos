@@ -22,8 +22,7 @@ void timer_int();             // irq0
 unsigned char keyboard_int(); // irq1
 
 // ISRs
-extern void isr0(); // divition by zero
-
+extern void isr0(); // divition by zero "Interrupt 0"
 // extern void isr1();
 // extern void isr2();
 // extern void isr3();
@@ -57,10 +56,8 @@ extern void isr8(); // double fault
 // extern void isr31();
 
 // IRQs
-
-extern void irq0(); // timer
+extern void irq0(); // timer "interrupt 32"
 extern void irq1(); // keyboard
-
 // extern void irq2();
 // extern void irq3();
 // extern void irq4();

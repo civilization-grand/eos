@@ -1,6 +1,0 @@
-{
-  "files.associations": {
-    "gdt.h": "c",
-    "kheap.h": "c"
-  }
-}
