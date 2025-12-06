@@ -1,0 +1,5 @@
+# All object files are ignored
+*/**/*.o
+
+# ignore iso file
+*.iso
