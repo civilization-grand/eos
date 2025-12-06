@@ -1,8 +1,7 @@
 #ifndef _IDT_H
 #define _IDT_H
 
-struct idt_entry
-{
+struct idt_entry {
     unsigned short base1;
     unsigned short segment_selector;
     unsigned char reserved;
@@ -10,19 +9,18 @@ struct idt_entry
     unsigned short base2;
 } __attribute__((packed));
 
-struct idt
-{
+struct idt {
     unsigned short size;
     unsigned int address;
 } __attribute__((packed));
 
-void zero_divide_int();       // isr0
-void double_fault_int();      // isr8
-void timer_int();             // irq0
-unsigned char keyboard_int(); // irq1
+void zero_divide_int();        // isr0
+void double_fault_int();       // isr8
+void timer_int();              // irq0
+unsigned char keyboard_int();  // irq1
 
 // ISRs
-extern void isr0(); // divition by zero "Interrupt 0"
+extern void isr0();  // divition by zero "Interrupt 0"
 // extern void isr1();
 // extern void isr2();
 // extern void isr3();
@@ -30,7 +28,7 @@ extern void isr0(); // divition by zero "Interrupt 0"
 // extern void isr5();
 // extern void isr6();
 // extern void isr7();
-extern void isr8(); // double fault
+extern void isr8();  // double fault
 // extern void isr9();
 // extern void isr10();
 // extern void isr11();
@@ -56,8 +54,8 @@ extern void isr8(); // double fault
 // extern void isr31();
 
 // IRQs
-extern void irq0(); // timer "interrupt 32"
-extern void irq1(); // keyboard
+extern void irq0();  // timer "interrupt 32"
+extern void irq1();  // keyboard
 // extern void irq2();
 // extern void irq3();
 // extern void irq4();

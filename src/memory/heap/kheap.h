@@ -11,21 +11,19 @@
 
 typedef unsigned char PAGE_ENTRY;
 
-struct entry_table
-{
-    PAGE_ENTRY *entries;
+struct entry_table {
+    PAGE_ENTRY* entries;
     unsigned int total_entries;
 };
 
-struct pool
-{
-    struct entry_table *pages_entry_table;
-    void *pool_start_address;
+struct pool {
+    struct entry_table* pages_entry_table;
+    void* pool_start_address;
 };
 
 void init_pool();
 
-void *allocate_pages(unsigned int size);
-void free_pages(void *ptr);
+void* allocate_pages(unsigned int size);
+void free_pages(void* ptr);
 
 #endif

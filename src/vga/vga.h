@@ -26,7 +26,7 @@
 void write_cell(unsigned int i, char c, unsigned char fg, unsigned char bg);
 void write_char(char c, unsigned char fg, unsigned char bg);
 void mov_cursor(int pos);
-void fb_write(char *buf, int len, unsigned char fg, unsigned char bg);
+void fb_write(char* buf, int len, unsigned char fg, unsigned char bg);
 void scroll_screen();
 void init_console();
 

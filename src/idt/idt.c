@@ -1,9 +1,10 @@
 
 #include "idt.h"
+
 #include "io/io.h"
-#include "stdio/stdio.h"
 #include "memory/memory.h"
-#include "vga/vga.h" // For debugging
+#include "stdio/stdio.h"
+#include "vga/vga.h"  // For debugging
 
 unsigned char key;
 unsigned char key_ready;
@@ -11,10 +12,10 @@ unsigned char key_ready;
 struct idt_entry entries[256];
 struct idt idt_ptr;
 
-extern void idt_flush(struct idt *idtp);
+extern void idt_flush(struct idt* idtp);
 
-void set_idt_entry(unsigned int num, unsigned int handler, unsigned short segment, unsigned char flags)
-{
+void set_idt_entry(unsigned int num, unsigned int handler, unsigned short segment,
+                   unsigned char flags) {
     entries[num].base1 = handler & 0x0000FFFF;
     entries[num].segment_selector = segment;
     entries[num].reserved = 0;
@@ -23,35 +24,27 @@ void set_idt_entry(unsigned int num, unsigned int handler, unsigned short segmen
 }
 
 //----------ISRs-------------
-void zero_divide_int()
-{
+void zero_divide_int() {
     print("Error: divide by zero\n");
-    for (;;)
-        ;
+    for (;;);
 }
 
-void double_fault_int()
-{
+void double_fault_int() {
     print("Double fault\n");
-    for (;;)
-        ;
+    for (;;);
 }
 //----------ISRs-------------
 
 //-------IRQs----------------
-void timer_int()
-{
+void timer_int() {
     print("Timer\n");
     outb(0x20, 0x20);
 }
 
-unsigned char keyboard_int()
-{
-
+unsigned char keyboard_int() {
     unsigned char sc = inb(0x60);
 
-    if (sc < 0x80)
-    {
+    if (sc < 0x80) {
         /*
         if (scancode_to_ascii[sc] == '\b')
         {
@@ -59,35 +52,31 @@ unsigned char keyboard_int()
         }
         */
 
-        if (scancode_to_ascii[sc] == -56)
-        {
+        if (scancode_to_ascii[sc] == -56) {
             caps_lock = !caps_lock;
             key_ready = 0;
-        }
-        else
-        {
+        } else {
             key = sc;
             key_ready = 1;
         }
     }
 
     // print(" A key is pressed ");
-    outb(0x20, 0x20); // Master PIC."acknowledgment" that the hardware interrupt must send. (interrupt handling complete).
+    outb(0x20, 0x20);  // Master PIC."acknowledgment" that the hardware interrupt
+                       // must send. (interrupt handling complete).
 }
 //-------IRQs----------------
 
-void no_int_handler()
-{
+void no_int_handler() {
     print("No handler\n");
     outb(0x20, 0x20);
 }
 
-void init_idt()
-{
+void init_idt() {
     memset(entries, 0, sizeof(entries));
 
     idt_ptr.size = sizeof(entries) - 1;
-    idt_ptr.address = entries;
+    idt_ptr.address = (int)entries;
 
     /*The two PIC chips (master/slave) must be initialized*/
     // First PIC chip: 0x20 for commands //0x21 for data
@@ -108,11 +97,10 @@ void init_idt()
     outb(0x21, 0x00);
     outb(0xA1, 0x00);
 
-    outb(0x21, inb(0x21) | 0x01); // Mask timer interrupt.
+    outb(0x21, inb(0x21) | 0x01);  // Mask timer interrupt.
     //  outb(0x21, inb(0x21) | 0x02); // Mask keyboard int
 
-    for (int i = 0; i < 256; i++)
-    {
+    for (int i = 0; i < 256; i++) {
         set_idt_entry(i, (unsigned int)no_int_handler, 0x08, 0x8E);
     }
 

@@ -2,8 +2,7 @@
 #ifndef _GDT_H
 #define _GDT_H
 
-struct gdt_entry
-{
+struct gdt_entry {
     /*Entry size = 64 bits*/
     unsigned short limit1;
     unsigned short base1;
@@ -13,14 +12,14 @@ struct gdt_entry
     unsigned char base3;
 } __attribute__((packed));
 
-struct gdt
-{
+struct gdt {
     /*GDT register value size = 48 bits*/
     unsigned short size;
-    struct gdt_entry *address;
+    struct gdt_entry* address;
 } __attribute__((packed));
 
 void init_gdt();
-void set_gdt_entry(unsigned int num, unsigned int base, unsigned limit, unsigned char access, unsigned char gran);
+void set_gdt_entry(unsigned int num, unsigned int base, unsigned limit, unsigned char access,
+                   unsigned char gran);
 
 #endif

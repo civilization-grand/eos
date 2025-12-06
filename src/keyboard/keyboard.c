@@ -1,31 +1,35 @@
 
 #include "keyboard.h"
-#include "stdio/stdio.h"
+
 #include "idt/idt.h"
+#include "stdio/stdio.h"
 
 char caps_lock = 0;
 
 char scancode_to_ascii[128] = {
-    0, 27, '1', '2', '3', '4', '5', '6', '7', '8', '9', '0', '-', '=', '\b',   // 0-14
-    '\t', 'q', 'w', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'p', '[', ']', '\n', 0, // 15-29
-    'a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l', ';', '\'', '`', 0, '\\',      // 30-43
-    'z', 'x', 'c', 'v', 'b', 'n', 'm', ',', '.', '/', 0, '*', 0, ' ',          // 44-57
+    0,    27,  '1', '2', '3', '4', '5', '6', '7', '8', '9',  '0', '-', '=',  '\b',  // 0-14
+    '\t', 'q', 'w', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'p',  '[', ']', '\n', 0,     // 15-29
+    'a',  's', 'd', 'f', 'g', 'h', 'j', 'k', 'l', ';', '\'', '`', 0,   '\\',        // 30-43
+    'z',  'x', 'c', 'v', 'b', 'n', 'm', ',', '.', '/', 0,    '*', 0,   ' ',         // 44-57
 
-    200 // Caps Lock (58) /*I wrote 200 here before, and this was one of the dumbest thing that I have ever done.*/
+    200  // Caps Lock (58) /*I wrote 200 here before, and this was one of the dumbest thing that I
+         // have ever done.*/
     /*
     129, 130, 131, 132,                                                        // F1-F4 (59-62)
     133, 134, 135, 136,                                                        // F5-F8 (63-66)
     137, 138, 139,                                                             // F9-F11 (67-69)
     140,                                                                       // F12 (70)
     141,                                                                       // Num Lock (71)
-    142, 143, 144, 145, 146, 147, 148, 149,                                    // Home to Page Down (72-79)
+    142, 143, 144, 145, 146, 147, 148, 149,                                    // Home to Page Down
+    (72-79)
     '-',                                                                       // Keypad '-'
-    150, 151, 152, 153,                                                        // Arrow keys and Insert/Delete (80-83)
+    150, 151, 152, 153,                                                        // Arrow keys and
+    Insert/Delete (80-83)
     '+',                                                                       // Keypad '+'
-    154, 155, 156,                                                             // End, Down, Page Down
-    157,                                                                       // Keypad Enter or some other
-    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,                            // 84-99 (unused or extended)
-    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,                            // 100-115
-    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,                                           // 116-127
+    154, 155, 156,                                                             // End, Down, Page
+    Down 157,                                                                       // Keypad Enter
+    or some other 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,                            //
+    84-99 (unused or extended) 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, // 100-115 0, 0, 0,
+    0, 0, 0, 0, 0, 0, 0, 0,                                           // 116-127
     */
 };
